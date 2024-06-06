@@ -4,8 +4,13 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+<<<<<<< HEAD
   server: {
     port: 3000,
     host: "0.0.0.0",
+=======
+  preview: {
+    port: 3000,
+>>>>>>> 0655ef7 (chore: project boilerplate w/ Vite)
   },
 });
