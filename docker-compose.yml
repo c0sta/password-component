@@ -8,3 +8,10 @@ services:
       - .:/app
     ports:
       - 3000:3000
+  storybook:
+    build: .
+    entrypoint: sh -c "npm install && npm run storybook"
+    volumes:
+      - .:/app
+    ports:
+      - 6006:6006
