@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-  app:
+  storybook:
     build: .
-    entrypoint: sh -c "npm install && npm run dev"
+    entrypoint: sh -c "npm install && npm run storybook"
     volumes:
       - .:/app
     ports:
-      - 3000:3000
+      - 6006:6006
