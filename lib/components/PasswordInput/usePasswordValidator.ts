@@ -17,7 +17,10 @@ export const usePasswordValidator = () => {
         ),
       numeric: () => splittedValue.some((char) => Number.isInteger(+char)),
       uppercase: () => /[A-Z]/.test(value),
-      consecutiveCharacters: () => false,
+      consecutiveCharacters: () =>
+        !splittedValue.some(
+          (currentChar, index) => currentChar === splittedValue[index + 1]
+        ) && splittedValue.length >= 2,
     };
 
     return validations[type]();

@@ -20,7 +20,7 @@ const INVALID_TEST_CASES = [
   ["do not have special character", "specialCharacters"],
   ["do not have numeric digit", "numeric"],
   ["do not have uppercase letter", "uppercase"],
-  // ["have consecutive letters", "consecutive"],
+  ["have consecutive letters", "consecutiveCharacters"],
 ];
 
 const VALID_TEST_CASES = [
@@ -28,7 +28,7 @@ const VALID_TEST_CASES = [
   ["have special character", "specialCharacters", "password@"],
   ["have numeric digit", "numeric", "password123"],
   ["have uppercase letter", "uppercase", "Password"],
-  // ["do not have consecutive letters", "consecutive", "pasword"],
+  ["do not have consecutive letters", "consecutiveCharacters", "pasword"],
 ];
 
 describe("PasswordInput Unit Test", () => {
