@@ -1,28 +1,13 @@
 import { useState } from "react";
-import { FaCheck, FaX } from "react-icons/fa6";
 import { usePasswordValidator } from "./usePasswordValidator";
 import { defaultProps, defaultState } from "@constants";
+import { Status } from "@components";
 import {
   PasswordInputProps,
   ValidationStatus,
   ValidationStatusState,
 } from "@types";
 import "./styles.css";
-
-const Status: React.FC<{ status: ValidationStatus }> = ({ status }) => {
-  if (status === ValidationStatus.INVALID) {
-    return (
-      <span className="invalid-icon" data-testid="invalid-input">
-        <FaX />
-      </span>
-    );
-  }
-  return (
-    <span className="valid-icon" data-testid="valid-input">
-      <FaCheck />
-    </span>
-  );
-};
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
   options = defaultProps,
@@ -58,13 +43,11 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
       />
 
       <ul className="validations-feedback">
-        {options?.map(({ type, message }) => {
-          return (
-            <li>
-              <Status status={validationStatus[type]} /> {message}
-            </li>
-          );
-        })}
+        {options?.map(({ type, message }) => (
+          <li className="validation">
+            <Status status={validationStatus[type]} /> {message}
+          </li>
+        ))}
       </ul>
     </div>
   );
