@@ -2,3 +2,7 @@
   width: 164px;
   padding: 10px;
 }
+
+.validations-feedback {
+  list-style: none;
+}
