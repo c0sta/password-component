@@ -1,37 +1,13 @@
-import { useState } from "react";
-import { usePasswordValidator } from "./usePasswordValidator";
-import { defaultProps, defaultState } from "@constants";
-import { Status } from "@components";
-import {
-  PasswordInputProps,
-  ValidationStatus,
-  ValidationStatusState,
-} from "@types";
 import "./styles.css";
+import { Status } from "@components";
+import { defaultProps } from "@constants";
+import { PasswordInputProps } from "@types";
+import { usePasswordInput } from "./usePasswordInput";
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
   options = defaultProps,
 }) => {
-  const [validationStatus, setValidationStatus] =
-    useState<ValidationStatusState>(defaultState);
-  const passwordValidator = usePasswordValidator();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
-    options?.forEach(({ type, validate }) => {
-      const hasCustomValidator = !!validate;
-
-      const isValid = hasCustomValidator
-        ? validate(value)
-        : passwordValidator.validate(type, value);
-
-      setValidationStatus((oldState) => ({
-        ...oldState,
-        [type]: isValid ? ValidationStatus.VALID : ValidationStatus.INVALID,
-      }));
-    });
-  };
+  const { handleChange, validationStatus } = usePasswordInput({ options });
 
   return (
     <div>
