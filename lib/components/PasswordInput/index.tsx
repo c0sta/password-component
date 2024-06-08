@@ -1,46 +1,16 @@
 import { useState } from "react";
-import "./styles.css";
-import { ValidationsType } from "@types";
-import { usePasswordValidator } from "./usePasswordValidator";
 import { FaCheck, FaX } from "react-icons/fa6";
-
-interface Props {
-  options?: Array<{
-    type: ValidationsType;
-    message?: string;
-    validate?: (value: string) => boolean;
-  }>;
-}
-
-const defaultProps: Props["options"] = [
-  {
-    type: "numeric",
-    message: "Has a number 0-9",
-  },
-  {
-    type: "specialCharacters",
-    message: "Has a special character !@#$%^&*",
-  },
-  {
-    type: "uppercase",
-    message: "Has uppercase letter",
-  },
-  {
-    type: "consecutiveCharacters",
-    message: "Has no consecutive letters",
-  },
-];
-
-type ValidationStatus = "INVALID" | "VALID";
-const defaultState: Record<ValidationsType, ValidationStatus> = {
-  numeric: "INVALID",
-  consecutiveCharacters: "INVALID",
-  specialCharacters: "INVALID",
-  uppercase: "INVALID",
-};
+import { usePasswordValidator } from "./usePasswordValidator";
+import { defaultProps, defaultState } from "@constants";
+import {
+  PasswordInputProps,
+  ValidationStatus,
+  ValidationStatusState,
+} from "@types";
+import "./styles.css";
 
 const Status: React.FC<{ status: ValidationStatus }> = ({ status }) => {
-  if (status === "INVALID") {
+  if (status === ValidationStatus.INVALID) {
     return (
       <span className="invalid-icon" data-testid="invalid-input">
         <FaX />
@@ -54,9 +24,11 @@ const Status: React.FC<{ status: ValidationStatus }> = ({ status }) => {
   );
 };
 
-export const PasswordInput: React.FC<Props> = ({ options = defaultProps }) => {
+export const PasswordInput: React.FC<PasswordInputProps> = ({
+  options = defaultProps,
+}) => {
   const [validationStatus, setValidationStatus] =
-    useState<Record<ValidationsType, "INVALID" | "VALID">>(defaultState);
+    useState<ValidationStatusState>(defaultState);
   const passwordValidator = usePasswordValidator();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +43,7 @@ export const PasswordInput: React.FC<Props> = ({ options = defaultProps }) => {
 
       setValidationStatus((oldState) => ({
         ...oldState,
-        [type]: isValid ? "VALID" : "INVALID",
+        [type]: isValid ? ValidationStatus.VALID : ValidationStatus.INVALID,
       }));
     });
   };
