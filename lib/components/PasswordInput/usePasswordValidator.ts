@@ -15,7 +15,8 @@ export const usePasswordValidator = () => {
         SPECIAL_CHARS.split("").some((specialChar) =>
           value.includes(specialChar)
         ),
-      numeric: () => splittedValue.some((char) => Number.isInteger(+char)),
+      numeric: () =>
+        splittedValue.some((char) => Number.isInteger(+char || null)),
       uppercase: () => /[A-Z]/.test(value),
       consecutiveCharacters: () =>
         !splittedValue.some(
