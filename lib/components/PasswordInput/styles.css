@@ -1,19 +1,10 @@
-.password-input {
-  width: 164px;
-  padding: 10px;
-}
-
-.validations-feedback {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  list-style: none;
-  font-family: sans-serif;
-  font-weight: 500;
-}
-
-.validation {
+.password-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+}
+
+.password-input {
+  width: 164px;
+  height: fit-content;
+  padding: 10px;
 }

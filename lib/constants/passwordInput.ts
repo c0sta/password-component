@@ -1,10 +1,6 @@
-import {
-  PasswordInputProps,
-  ValidationStatus,
-  ValidationStatusState,
-} from "@types";
+import { OptionsProps, ValidationStatus, ValidationStatusState } from "@types";
 
-export const defaultProps: PasswordInputProps["options"] = [
+export const defaultProps: OptionsProps = [
   {
     type: "numeric",
     message: "Has a number 0-9",
