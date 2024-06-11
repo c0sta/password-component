@@ -7,7 +7,7 @@ import path, { resolve } from "path";
 export default defineConfig({
   plugins: [
     react(),
-    dts({ rollupTypes: true, tsconfigPath: "tsconfig.build.json" }),
+    dts({ rollupTypes: false, tsconfigPath: "tsconfig.build.json" }),
   ],
   build: {
     lib: {
