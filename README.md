@@ -82,8 +82,8 @@ The requirements were:
   - [x] Has a number / digit
   - [x] Has an uppercase letter
   - [x] Has NO consecutive letters\*\*\*\* (stretch goal)
-- [X]The component should be styled as above, but should be able to be extended.
-- [X]There should be a way for us to validate your implementation - this could be automated
+- [X] The component should be styled as above, but should be able to be extended.
+- [X] There should be a way for us to validate your implementation - this could be automated
   testing, a reference build, whatever you’re comfortable with.
 
 Notes about future improvements in the Library:
