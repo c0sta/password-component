@@ -1,0 +1,19 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  border-radius: 50%;
+  color: white;
+  font-size: 11px;
+}
+
+.invalid-icon {
+  background-color: red;
+}
+
+.valid-icon {
+  background-color: green;
+}

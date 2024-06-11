@@ -1,4 +1,10 @@
+.password-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .password-input {
   width: 164px;
+  height: fit-content;
   padding: 10px;
 }

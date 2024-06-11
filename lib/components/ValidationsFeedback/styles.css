@@ -1,0 +1,14 @@
+.validations-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.validation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

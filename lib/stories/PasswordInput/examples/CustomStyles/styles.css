@@ -1,0 +1,26 @@
+.custom-input .password-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.custom-input .password-input {
+  background-color: lightgrey;
+  border-radius: 8px;
+  border: none;
+  width: 256px;
+}
+
+.custom-input .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.custom-input .invalid-icon {
+  background-color: gray;
+}
+
+.custom-input .valid-icon {
+  background-color: forestgreen;
+}

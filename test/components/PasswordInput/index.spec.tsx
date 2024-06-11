@@ -1,22 +1,56 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { PasswordInput } from "@components";
 import "@testing-library/jest-dom";
+import { ValidationsType } from "@types";
+import {
+  INVALID_TEST_CASES,
+  PLACEHOLDER,
+  STATUS,
+  VALID_TEST_CASES,
+} from "./mocks";
 
 describe("PasswordInput Unit Test", () => {
   it("should exist", async () => {
-    render(<PasswordInput options={[]} />);
-    expect(
-      await screen.findByPlaceholderText("Enter your password")
-    ).toBeInTheDocument();
+    render(<PasswordInput />);
+    expect(await screen.findByPlaceholderText(PLACEHOLDER)).toBeInTheDocument();
   });
 
-  it.todo(
-    "should display error if password do not have one or more special characters"
-  );
+  describe("Validate INVALID status", () => {
+    test.each(INVALID_TEST_CASES)(
+      "should display INVALID status if password %s",
+      async (_, validationType) => {
+        const { getByPlaceholderText, getByTestId } = render(
+          <PasswordInput
+            options={[{ type: validationType as ValidationsType }]}
+          />
+        );
 
-  it.todo("should display error if password do not have a numeric digit");
+        const passwordField = getByPlaceholderText(PLACEHOLDER);
+        await userEvent.type(passwordField, "password");
 
-  it.todo("should display error if password do not have an uppercase letter");
+        const invalidStatus = getByTestId(STATUS.INVALID);
+        expect(invalidStatus).toBeInTheDocument();
+      }
+    );
+  });
 
-  it.todo("should display error if password has consecutive letters");
+  describe("Validate VALID status", () => {
+    test.each(VALID_TEST_CASES)(
+      "should display VALID status if password %s",
+      async (_, validationType, passwordMock) => {
+        const { getByPlaceholderText, getByTestId } = render(
+          <PasswordInput
+            options={[{ type: validationType as ValidationsType }]}
+          />
+        );
+
+        const passwordField = getByPlaceholderText(PLACEHOLDER);
+        await userEvent.type(passwordField, passwordMock);
+
+        const validStatus = getByTestId(STATUS.VALID);
+        expect(validStatus).toBeInTheDocument();
+      }
+    );
+  });
 });

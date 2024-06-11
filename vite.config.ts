@@ -11,7 +11,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      name: "qventus-lib",
+      name: "@qventus",
       entry: resolve(__dirname, "./lib/index.ts"),
       fileName: (format) => `index.${format}.js`,
     },
@@ -36,6 +36,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./lib/components"),
+      "@types": path.resolve(__dirname, "./lib/types"),
+      "@constants": path.resolve(__dirname, "./lib/constants"),
     },
   },
 });
